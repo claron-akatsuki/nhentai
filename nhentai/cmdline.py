@@ -46,6 +46,7 @@ def cmd_parser():
     parser.add_option('--search', type='string', dest='keyword', action='store', help='search doujinshi by keyword')
     parser.add_option('--page', type='int', dest='page', action='store', default=1,
                       help='page number of search results')
+    parser.add_option('--popular', dest='is_popular', action='store_true', help='sort search results by popularity')
     parser.add_option('--tag', type='string', dest='tag', action='store', help='download doujinshi by tag')
     parser.add_option('--max-page', type='int', dest='max_page', action='store', default=1,
                       help='The max page when recursive download tagged doujinshi')

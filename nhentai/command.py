@@ -34,7 +34,7 @@ def main():
             doujinshi_ids = map(lambda d: d['id'], doujinshis)
 
     if options.keyword:
-        doujinshis = search_parser(options.keyword, options.page)
+        doujinshis = search_parser(options.keyword, options.page, options.is_popular)
         print_doujinshi(doujinshis)
         if options.is_download:
             doujinshi_ids = map(lambda d: d['id'], doujinshis)

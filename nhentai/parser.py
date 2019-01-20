@@ -143,11 +143,14 @@ def doujinshi_parser(id_):
     return doujinshi
 
 
-def search_parser(keyword, page):
+def search_parser(keyword, page, is_popular):
     logger.debug('Searching doujinshis of keyword {0}'.format(keyword))
     result = []
     try:
-        response = request('get', url=constant.SEARCH_URL, params={'q': keyword, 'page': page}).content
+        search_params = {'q': keyword, 'page': page}
+        if is_popular:
+            search_params['sort'] = 'popular'
+        response = request('get', url=constant.SEARCH_URL, params=search_params).content
     except requests.ConnectionError as e:
         logger.critical(e)
         logger.warn('If you are in China, please configure the proxy to fu*k GFW.')
