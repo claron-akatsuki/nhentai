@@ -54,6 +54,8 @@ nhentai --tag lolicon --download
 + `--login`: username:password pair of your nhentai account  
 + `--nohtml`: Do not generate HTML  
 + `--cbz`: Generate Comic Book CBZ File  
++ `--popular`: Sort search results by popularity  
+
 
 ### nHentai Mirror
 If you want to use a mirror, you should set up a reverse proxy of `nhentai.net` and `i.nhentai.net`.
