@@ -3,6 +3,8 @@
 from __future__ import unicode_literals, print_function
 import signal
 import platform
+import os
+import logging
 
 from nhentai.cmdline import cmd_parser, banner
 from nhentai.parser import doujinshi_parser, search_parser, print_doujinshi, login_parser, tag_parser
@@ -13,10 +15,17 @@ from nhentai.constant import BASE_URL
 from nhentai.utils import generate_html, generate_cbz
 
 
+
+
 def main():
+
     banner()
     logger.info('Using mirror: {0}'.format(BASE_URL))
     options = cmd_parser()
+
+    err_log = logging.FileHandler(os.path.join(options.output_dir, 'errors.log'))
+    err_log.setLevel(logging.WARNING)
+    logger.addHandler(err_log)  
 
     doujinshi_ids = []
     doujinshi_list = []
