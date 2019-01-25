@@ -50,9 +50,9 @@ nhentai --tag lolicon --download
 + `--output`:Output dir of saving doujinshi  
 + `--tag`:Download by tag name  
 + `--timeout`: Timeout of downloading each image   
-+ `--proxy`: Use proxy, example: http://127.0.0.1:8080/  
++ `--proxy`: Use proxy, example: http://127.0.0.1:8080/
 + `--login`: username:password pair of your nhentai account  
-+ `--nohtml`: Do not generate HTML  
++ `--html`: Generate HTML reader
 + `--cbz`: Generate Comic Book CBZ File  
 + `--popular`: Sort search results by popularity  
 

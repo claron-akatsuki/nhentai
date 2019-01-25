@@ -58,13 +58,11 @@ def cmd_parser():
                       help='timeout for downloading doujinshi')
     parser.add_option('--proxy', type='string', dest='proxy', action='store', default='',
                       help='uses a proxy, for example: http://127.0.0.1:1080')
-    parser.add_option('--html', dest='html_viewer', action='store_true',
-                      help='generate a html viewer at current directory')
 
     parser.add_option('--login', '-l', type='str', dest='login', action='store',
                       help='username:password pair of nhentai account')
 
-    parser.add_option('--nohtml', dest='is_nohtml', action='store_true',
+    parser.add_option('--html', dest='is_html', action='store_true',
                       help='Don\'t generate HTML')
 
     parser.add_option('--cbz', dest='is_cbz', action='store_true',
@@ -80,10 +78,6 @@ def cmd_parser():
         exit(0)
 
     args, _ = parser.parse_args(sys.argv[1:])
-
-    if args.html_viewer:
-        generate_html()
-        exit(0)
 
     if args.login:
         try:

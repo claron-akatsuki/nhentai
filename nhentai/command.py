@@ -63,7 +63,7 @@ def main():
         for doujinshi in doujinshi_list:
             doujinshi.downloader = downloader
             doujinshi.download()
-            if not options.is_nohtml and not options.is_cbz:
+            if options.is_html and not options.is_cbz:
                 generate_html(options.output_dir, doujinshi)
             elif options.is_cbz:
                 generate_cbz(options.output_dir, doujinshi, options.rm_origin_dir)

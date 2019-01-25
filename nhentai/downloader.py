@@ -43,13 +43,21 @@ class Downloader(Singleton):
                 return 1, url
 
             response = None
-            with open(os.path.join(folder, base_filename.zfill(3) + extension), "wb") as f:
+            file_path = os.path.join(folder, base_filename.zfill(3) + extension)
+            ext_changed = False
+            with open(file_path, "wb") as f:
                 i = 0
                 while i < 10:
                     try:
                         response = request('get', url, stream=True, timeout=self.timeout)
                         if response.status_code != 200:
-                            raise NhentaiImageNotExistException
+                            alt_ext = 'png' if url[-3:] == 'jpg' else 'jpg'
+                            url = url[:-3] + alt_ext
+                            new_file_path = file_path[:-3] + alt_ext
+                            ext_changed = True
+                            response = request('get', url, stream=True, timeout=self.timeout)
+                            if response.status_code != 200:
+                                raise NhentaiImageNotExistException
 
                     except NhentaiImageNotExistException as e:
                         raise e
@@ -84,6 +92,9 @@ class Downloader(Singleton):
         except Exception as e:
             logger.critical(str(e))
             return 0, None
+
+        if ext_changed:
+            os.rename(file_path, new_file_path)
 
         return 1, url
 
