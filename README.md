@@ -55,6 +55,7 @@ nhentai --tag lolicon --download
 + `--html`: Generate HTML reader
 + `--cbz`: Generate Comic Book CBZ File  
 + `--popular`: Sort search results by popularity  
++ `--errors`: Create error log
 
 
 ### nHentai Mirror

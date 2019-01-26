@@ -23,9 +23,10 @@ def main():
     logger.info('Using mirror: {0}'.format(BASE_URL))
     options = cmd_parser()
 
-    err_log = logging.FileHandler(os.path.join(options.output_dir, 'errors.log'))
-    err_log.setLevel(logging.WARNING)
-    logger.addHandler(err_log)  
+    if options.errors:
+        err_log = logging.FileHandler(os.path.join(options.output_dir, 'errors.log'))
+        err_log.setLevel(logging.WARNING)
+        logger.addHandler(err_log)  
 
     doujinshi_ids = []
     doujinshi_list = []

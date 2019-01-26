@@ -67,8 +67,9 @@ def cmd_parser():
 
     parser.add_option('--cbz', dest='is_cbz', action='store_true',
                       help='Generate Comic Book CBZ File')
-    parser.add_option('--rm-origin-dir', dest='rm_origin_dir', action='store_true', default=False,
+    parser.add_option('--rm-origin-dir', dest='rm_origin_dir', action='store_true',
                       help='Remove downloaded doujinshi dir when generated CBZ file.')
+    parser.add_option('--errors', dest='errors', action='store_true', help='create error log file')
                       
     try:
         sys.argv = list(map(lambda x: unicode(x.decode(sys.stdin.encoding)), sys.argv))
